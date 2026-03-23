@@ -1,0 +1,70 @@
+# ── Compiled output
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+
+src/test/
+
+# ── Maven
+.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+# ── IDEs
+
+# IntelliJ IDEA
+
+*.iws
+*.ipr
+out/
+.idea/
+*.iml
+
+
+# Eclipse
+.classpath
+.project
+.settings/
+.factorypath
+bin/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# NetBeans
+nbproject/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+# ── OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ── Logs & temp
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# ── Environment / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/

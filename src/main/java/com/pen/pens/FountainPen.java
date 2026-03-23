@@ -1,0 +1,44 @@
+package com.pen.pens;
+
+import com.pen.enums.PenType;
+import com.pen.interfaces.InkFillable;
+import com.pen.models.Ink;
+import com.pen.models.Nib;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class FountainPen extends Pen implements InkFillable {
+    private Ink ink;
+    private Nib nib;
+
+    public FountainPen(String brand, String name, Double price, Ink ink, Nib nib) {
+        super(PenType.FOUNTAIN);
+        this.setBrand(brand);
+        this.setName(name);
+        this.setPrice(price);
+        this.ink = ink;
+        this.nib = nib;
+    }
+
+    @Override
+    public void write() {
+        System.out.println("Writing with Fountain Pen...");
+    }
+
+    @Override public void open() { System.out.println("Fountain open."); }
+    @Override public void close() { System.out.println("Fountain closed."); }
+
+    // Fix: Implement the methods from InkFillable
+    @Override
+    public void changeInk(Ink ink) {
+        this.ink = ink;
+        System.out.println("Fountain pen ink changed.");
+    }
+
+    @Override
+    public Ink getInk() {
+        return this.ink;
+    }
+}
