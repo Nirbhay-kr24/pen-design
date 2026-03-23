@@ -6,6 +6,8 @@ target/
 *.ear
 *.nar
 
+src/test/
+
 # ── Maven
 .mvn/wrapper/maven-wrapper.jar
 !.mvn/wrapper/maven-wrapper.properties
