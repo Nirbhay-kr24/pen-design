@@ -2,6 +2,7 @@ package com.pen.pens;
 
 import com.pen.enums.PenType;
 import com.pen.interfaces.RefillPen;
+import com.pen.interfaces.Cover; // Added
 import com.pen.models.Refill;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,12 +12,10 @@ import lombok.Setter;
 public class BallPen extends Pen implements RefillPen {
     private Refill refill;
 
-    public BallPen(String brand, String name, Double price, Refill refill) {
-        // Calling the base Pen constructor
-        super(PenType.BALL);
-        this.setBrand(brand);
-        this.setName(name);
-        this.setPrice(price);
+    // Updated Constructor to include the Cover strategy
+    public BallPen(String brand, String name, Double price, Refill refill, Cover cover) {
+        // Pass everything to the super constructor for a cleaner look
+        super(brand, name, price, PenType.BALL, cover);
         this.refill = refill;
     }
 
@@ -26,18 +25,7 @@ public class BallPen extends Pen implements RefillPen {
     }
 
     @Override
-    public void open() {
-        System.out.println("Ball pen cap clicked/removed.");
-    }
-
-    @Override
-    public void close() {
-        System.out.println("Ball pen closed.");
-    }
-
-    // Implementing behavior from RefillPen interface
-    @Override
-    public void changeRefill(Refill newRefill) {
+    public void refill(Refill newRefill) {
         if (this.canRefill()) {
             this.refill = newRefill;
             System.out.println("Refill changed successfully for Ball Pen.");

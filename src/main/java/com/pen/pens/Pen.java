@@ -1,27 +1,33 @@
 package com.pen.pens;
 
-import com.pen.interfaces.Writable;
+import com.pen.interfaces.*;
 import com.pen.enums.PenType;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Getter @Setter
 public abstract class Pen implements Writable {
     private String brand;
     private String name;
-    private PenType type;
     private Double price;
+    private PenType type;
+    private Cover cover;
 
-    public Pen(PenType type) {
+    public Pen(String brand, String name, Double price, PenType type, Cover cover) {
+        this.brand = brand;
+        this.name = name;
+        this.price = price;
         this.type = type;
+        this.cover = cover;
     }
 
+    public void start() {
+        cover.start();
+    }
 
-    public abstract void open();
-    public abstract void close();
-
-
-    @Override
     public abstract void write();
+
+    public void close() {
+        cover.close();
+    }
 }

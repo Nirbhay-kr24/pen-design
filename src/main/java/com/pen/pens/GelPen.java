@@ -2,6 +2,7 @@ package com.pen.pens;
 
 import com.pen.enums.PenType;
 import com.pen.interfaces.RefillPen;
+import com.pen.interfaces.Cover; // Added
 import com.pen.models.Refill;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,11 +12,8 @@ import lombok.Setter;
 public class GelPen extends Pen implements RefillPen {
     private Refill refill;
 
-    public GelPen(String brand, String name, Double price, Refill refill) {
-        super(PenType.GEL);
-        this.setBrand(brand);
-        this.setName(name);
-        this.setPrice(price);
+    public GelPen(String brand, String name, Double price, Refill refill, Cover cover) {
+        super(brand, name, price, PenType.GEL, cover);
         this.refill = refill;
     }
 
@@ -25,17 +23,7 @@ public class GelPen extends Pen implements RefillPen {
     }
 
     @Override
-    public void open() {
-        System.out.println("Gel pen cap opened.");
-    }
-
-    @Override
-    public void close() {
-        System.out.println("Gel pen cap closed.");
-    }
-
-    @Override
-    public void changeRefill(Refill refill) {
+    public void refill(Refill refill) {
         if (this.canRefill()) {
             this.refill = refill;
             System.out.println("Gel refill replaced successfully.");
@@ -47,5 +35,10 @@ public class GelPen extends Pen implements RefillPen {
     @Override
     public Boolean canRefill() {
         return refill.isRefillable();
+    }
+
+    @Override
+    public Refill getRefill() {
+        return this.refill;
     }
 }
